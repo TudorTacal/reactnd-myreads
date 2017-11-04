@@ -5,8 +5,7 @@ import "../public/App.css";
 export default function BookShelf() {
   return (
     <div className="bookshelf">
-        <div className="bookshelf-title">
-        </div>
+        <h2 className="bookshelf-title"></h2>
     </div>
   );
 }
