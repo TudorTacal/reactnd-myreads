@@ -1,17 +1,20 @@
 import { shallow, mount } from "enzyme";
 import React from "react";
 import BooksList from "../BooksList";
+import BookShelf from "../BookShelf"
 import Header from "../Header";
 import "./testSetup";
 
 describe("BooksList", () => {
   let wrapper;
-  let props = {
+  let props;
+
+  beforeEach(() => {
+    props = {
       title1: "Currently Reading",
       title2: "Want to Read",
       title3: "Read"
-  }
-  beforeEach(() => {
+    }
     wrapper = shallow(<BooksList />);
   });
 
@@ -28,6 +31,7 @@ describe("BooksList", () => {
   });
 
   it("renders three BookShelf components with titles", () => {
+    console.log(wrapper.debug());
     expect(wrapper.contains(<BookShelf title={props.title1}/>)).toBe(true);
     expect(wrapper.contains(<BookShelf title={props.title2}/>)).toBe(true);
     expect(wrapper.contains(<BookShelf title={props.title3}/>)).toBe(true);
