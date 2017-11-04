@@ -10,11 +10,11 @@ describe("BooksList", () => {
     })
 
     it("renders a div with the class 'list-books'", () => {
-        expect(wrapper.contains(<div className='.list-books'></div>)).toBe(true);
+        expect(wrapper.find('.list-books')).toBeDefined();
     });
 
      it("renders a div with the class 'list-books-title'", () => {
-        expect(wrapper.contains(<div className='.list-books-title'></div>)).toBe(true);
+        expect(wrapper.find('.list-books-title')).toBeDefined();
     });
 
 })
