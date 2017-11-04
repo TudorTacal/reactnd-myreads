@@ -1,10 +1,13 @@
-import React from 'react'
-import Header from './Header'
+import React from "react";
+import Header from "./Header";
 // import * as BooksAPI from './BooksAPI'
-import '../public/App.css'
+import "../public/App.css";
 
 export default function BooksList() {
-    return (
-        <Header/>
-    )
+  return (
+    <div className="list-books">
+      <Header />
+      <div className="list-books-content" />
+    </div>
+  );
 }
