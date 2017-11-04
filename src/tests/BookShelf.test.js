@@ -12,4 +12,10 @@ describe("BookShelf", () => {
   it("renders a div with the class 'list-books'", () => {
     expect(wrapper.find(".bookshelf")).toBeDefined();
   });
+
+  it("renders a div with the class 'bookshelf-title'", () => {
+    expect(wrapper.filter(".bookshelf-title").exists()).toBe(true);
+  });
+
+  
 });
