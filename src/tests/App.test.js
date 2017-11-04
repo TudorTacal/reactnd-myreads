@@ -5,13 +5,12 @@ import './testSetup'
 
 
 describe("App", () => {
-
+    let wrapper;
     beforeEach(() => {
-        let wrapper=shallow(<BooksApp/>);
+        wrapper=shallow(<BooksApp/>);
     })
 
     it("renders a div with a text", () => {
-        let wrapper=shallow(<BooksApp/>);
-        expect(wrapper.find('.main').text()).toBe("The start of the app");
+        expect(wrapper.find('.app').text()).toBe("The start of the app");
     })
 })
