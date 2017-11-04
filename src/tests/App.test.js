@@ -1,6 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 import BooksApp from '../App';
+import BooksList from '../BooksList'
 import './testSetup'
 
 
@@ -10,7 +11,7 @@ describe("App", () => {
         wrapper=shallow(<BooksApp/>);
     })
 
-    it("renders a div with a text", () => {
-        expect(wrapper.find('.app').text()).toBe("The start of the app");
+    it("renders a BookList component", () => {
+        expect(wrapper.contains(<BooksList/>)).toBe(true);
     })
 })
