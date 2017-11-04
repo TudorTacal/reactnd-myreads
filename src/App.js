@@ -1,11 +1,11 @@
 import React from 'react'
 // import * as BooksAPI from './BooksAPI'
-import './App.css'
+import '../public/App.css'
 
 class BooksApp extends React.Component {
   render() {
     return (
-      <div>The start of the app</div>
+      <div className='main'>The start of the app</div>
     )
   }
 }
