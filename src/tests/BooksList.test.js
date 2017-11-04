@@ -15,10 +15,10 @@ describe("BooksList", () => {
   });
 
   it("renders a div with the class 'list-books'", () => {
-    expect(wrapper.find(".list-books")).toBeDefined();
+    expect(wrapper.find(".list-books").exists()).toBe(true);
   });
 
   it("renders a div with the class 'list-books-content'", () => {
-    expect(wrapper.find(".list-books-title")).toBeDefined();
+    expect(wrapper.find(".list-books-content").exists()).toBe(true);
   });
 });

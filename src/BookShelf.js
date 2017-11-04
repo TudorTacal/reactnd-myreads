@@ -5,6 +5,8 @@ import "../public/App.css";
 export default function BookShelf() {
   return (
     <div className="bookshelf">
+        <div className="bookshelf-title">
+        </div>
     </div>
   );
 }

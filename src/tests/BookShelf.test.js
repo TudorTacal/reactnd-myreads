@@ -14,8 +14,7 @@ describe("BookShelf", () => {
   });
 
   it("renders a div with the class 'bookshelf-title'", () => {
-    expect(wrapper.filter(".bookshelf-title").exists()).toBe(true);
+    expect(wrapper.find(".bookshelf-title").exists()).toBe(true);
   });
 
-  
 });

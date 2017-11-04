@@ -7,7 +7,7 @@ export default function BooksList() {
   return (
     <div className="list-books">
       <Header />
-      <div className="list-books-content" />
+      <div className="list-books-content"/>
     </div>
   );
 }

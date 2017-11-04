@@ -10,7 +10,7 @@ describe("Header", () => {
   });
 
   it("renders a div with the class 'list-books-title'", () => {
-    expect(wrapper.find(".list-books-title")).toBeDefined();
+    expect(wrapper.find(".list-books-title").exists()).toBe(true);
   });
 
   it("renders a title with the text 'My Reads'", () => {
