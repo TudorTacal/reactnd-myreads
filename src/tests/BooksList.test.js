@@ -2,7 +2,6 @@ import { shallow, mount } from "enzyme";
 import React from "react";
 import BooksList from "../BooksList";
 import BookShelf from "../BookShelf";
-import Header from "../Header";
 import books from "./MockedBooks";
 import { getAll } from "../BooksAPI"
 import "./testSetup";
@@ -36,7 +35,7 @@ describe("BooksList", () => {
   describe("componentDidMount", async () => {
     it("fetches a list of books from the BooksAPI and saves it to its state", () => {
       return getAll().then(() => {
-        expect(wrapper.state("books")).toEqual(books);
+        expect(wrapper.state("books").books).toEqual(books);
       });
     });
   });

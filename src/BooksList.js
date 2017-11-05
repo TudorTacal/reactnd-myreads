@@ -1,10 +1,17 @@
-import React, { Component } from "react";
-import Header from "./Header";
-import BookShelf from "./BookShelf"
-// import * as BooksAPI from './BooksAPI'
+import React from "react";
+import BookShelf from "./BookShelf";
+import * as BooksAPI from './BooksAPI';
 import "../public/App.css";
 
  class BooksList extends React.Component {
+  state = {
+  }
+
+  componentDidMount() {
+    BooksAPI.getAll().then((books) => {
+      this.setState({books});
+    })
+  }
   render() {
      const [title1,title2, title3] = ["Currently Reading", "Want to Read", "Read"];
      return (
