@@ -4,4 +4,4 @@ import BooksApp from './App'
 import '../public/index.css'
 import App from './InitialApp'
 
-ReactDOM.render(<BooksApp />, document.getElementById('root'))
+ReactDOM.render(<App />, document.getElementById('root'))

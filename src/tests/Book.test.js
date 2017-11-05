@@ -6,9 +6,13 @@ import "./testSetup";
 
 describe("Book", () => {
   let wrapper;
-
+  let props;
   beforeEach(() => {
-    wrapper = shallow(<Book />);
+    props = {
+      title: "The Linux Command Line",
+      authors: ["William E. Shotts Jr.", "Harmeet Singh"]
+    };
+    wrapper = shallow(<Book {...props} />);
   });
 
   it("renders a div with a className 'book'", () => {
@@ -16,11 +20,11 @@ describe("Book", () => {
   });
 
   it("renders a div with a className 'book-title'", () => {
-    expect(wrapper.contains(<div className="book-title" />)).toBe(true);
+    expect(wrapper.find(".book-title").exists()).toBe(true);
   });
 
   it("renders a div with a className 'book-authors'", () => {
-    expect(wrapper.contains(<div className="book-authors" />)).toBe(true);
+    expect(wrapper.find(".book-authors").exists()).toBe(true);
   });
 
   it("renders a div with a className 'book-top'", () => {
@@ -32,23 +36,14 @@ describe("Book", () => {
   });
 
   it("renders a dropdown with options", () => {
-    expect(wrapper.contains(
-        <div className="book">
-          <div className="book-top">
-            <div className="book-cover" />
-            <div className="book-shelf-changer">
-              <select>
-                <option value="none" disabled>Move to...</option>
-                <option value="currentlyReading">Currently Reading</option>
-                <option value="wantToRead">Want to Read</option>
-                <option value="read">Read</option>
-                <option value="none">None</option>
-              </select>
-            </div>
-          </div>
-          <div className="book-title" />
-          <div className="book-authors" />
-        </div>
-      )).toBe(true);
+    expect(wrapper.find(".book-shelf-changer").html()).toBe('<div class=\"book-shelf-changer\"><select><option value=\"none\" disabled=\"\">Move to...</option><option value=\"currentlyReading\">Currently Reading</option><option value=\"wantToRead\">Want to Read</option><option value=\"read\">Read</option><option value=\"none\">None</option></select></div>');        
+  });
+
+  it("renders its title from props", () => {
+    expect(wrapper.find(".book-title").text()).toBe("The Linux Command Line");
+  });
+
+  it("renders its authors from props", () => {
+    expect(wrapper.find(".book-authors").text()).toBe("William E. Shotts Jr., Harmeet Singh");
   });
 });
