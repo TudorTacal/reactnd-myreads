@@ -12,7 +12,7 @@ describe("Book", () => {
   });
 
   it("renders a div with a className 'book'",() => {
-      expect(wrapper.contains(<div className="book"></div>)).toBe(true);
+      expect(wrapper.find(".book").exists()).toBe(true);
   })
 
   it("renders a div with a className 'book-title'",() => {
