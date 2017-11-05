@@ -8,10 +8,10 @@ describe("Book", () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Book />);
+    wrapper = shallow(<Book/>);
   });
 
   it("renders a div with a className 'book'",() => {
-      expect(wrapper.find('book').exists()).toBe(true);
+      expect(wrapper.contains(<div className="book"></div>)).toBe(true);
   })
 });
