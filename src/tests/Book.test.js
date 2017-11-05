@@ -31,7 +31,24 @@ describe("Book", () => {
     expect(wrapper.find(".book-cover").exists()).toBe(true);
   });
 
-  it("renders a div with a className 'book-shelf-changer'", () => {
-    expect(wrapper.find(".book-shelf-changer").exists()).toBe(true);
+  it("renders a dropdown with options", () => {
+    expect(wrapper.contains(
+        <div className="book">
+          <div className="book-top">
+            <div className="book-cover" />
+            <div className="book-shelf-changer">
+              <select>
+                <option value="none" disabled>Move to...</option>
+                <option value="currentlyReading">Currently Reading</option>
+                <option value="wantToRead">Want to Read</option>
+                <option value="read">Read</option>
+                <option value="none">None</option>
+              </select>
+            </div>
+          </div>
+          <div className="book-title" />
+          <div className="book-authors" />
+        </div>
+      )).toBe(true);
   });
 });
