@@ -10,7 +10,13 @@ describe("Book", () => {
   beforeEach(() => {
     props = {
       title: "The Linux Command Line",
-      authors: ["William E. Shotts Jr.", "Harmeet Singh"]
+      authors: ["William E. Shotts Jr.", "Harmeet Singh"],
+      imageLinks: {
+        smallThumbnail:
+          "http://books.google.com/books/content?id=nggnmAEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+        thumbnail:
+          "http://books.google.com/books/content?id=nggnmAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      }
     };
     wrapper = shallow(<Book {...props} />);
   });
@@ -36,14 +42,26 @@ describe("Book", () => {
   });
 
   it("renders a dropdown with options", () => {
-    expect(wrapper.find(".book-shelf-changer").html()).toBe('<div class=\"book-shelf-changer\"><select><option value=\"none\" disabled=\"\">Move to...</option><option value=\"currentlyReading\">Currently Reading</option><option value=\"wantToRead\">Want to Read</option><option value=\"read\">Read</option><option value=\"none\">None</option></select></div>');        
+    expect(wrapper.find(".book-shelf-changer").html()).toBe(
+      '<div class="book-shelf-changer"><select><option value="none" disabled="">Move to...</option><option value="currentlyReading">Currently Reading</option><option value="wantToRead">Want to Read</option><option value="read">Read</option><option value="none">None</option></select></div>'
+    );
   });
 
   it("renders its title from props", () => {
-    expect(wrapper.find(".book-title").text()).toBe("The Linux Command Line");
+    expect(wrapper.find("div.book-title").text()).toBe(
+      "The Linux Command Line"
+    );
   });
 
   it("renders its authors from props", () => {
-    expect(wrapper.find(".book-authors").text()).toBe("William E. Shotts Jr., Harmeet Singh");
+    expect(wrapper.find(".book-authors").text()).toBe(
+      "William E. Shotts Jr., Harmeet Singh"
+    );
+  });
+
+  it("renders its cover from props", () => {
+    expect(wrapper.find(".book-cover").props().style.backgroundImage).toEqual(
+      "http://books.google.com/books/content?id=nggnmAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    );
   });
 });
