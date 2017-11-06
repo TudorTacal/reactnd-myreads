@@ -22,4 +22,9 @@ describe("BookShelf", () => {
     expect(wrapper.find(".bookshelf-title").text()).toBe("Currently Reading");
   })
 
+   it("renders a div with the class 'bookshelf-books'", () => {
+    expect(wrapper.find(".bookshelf-books").exists()).toBe(true);
+  });
+
+
 });
