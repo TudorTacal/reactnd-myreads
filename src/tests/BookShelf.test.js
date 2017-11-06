@@ -26,5 +26,9 @@ describe("BookShelf", () => {
     expect(wrapper.find(".bookshelf-books").exists()).toBe(true);
   });
 
+   it("renders an ol with the class 'books-grid'", () => {
+    expect(wrapper.find(".books-grid").type()).toBe('ol');
+  });
+
 
 });
