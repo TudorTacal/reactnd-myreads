@@ -5,6 +5,7 @@ import "../public/App.css";
 
  class BooksList extends React.Component {
   state = {
+    books: []
   }
 
   componentDidMount() {
@@ -14,11 +15,12 @@ import "../public/App.css";
   }
   render() {
      const [title1,title2, title3] = ["Currently Reading", "Want to Read", "Read"];
+     const { books } = this.state;
      return (
       <div className="list-books-content">
-        <BookShelf title={title1}/>
-        <BookShelf title={title2}/>
-        <BookShelf title={title3}/>
+        <BookShelf title={title1} books={books}/>
+        <BookShelf title={title2} books={books}/>
+        <BookShelf title={title3} books={books}/>
       </div>
     );
   }

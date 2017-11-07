@@ -61,7 +61,7 @@ describe("Book", () => {
 
   it("renders its cover from props", () => {
     expect(wrapper.find(".book-cover").props().style.backgroundImage).toEqual(
-      "http://books.google.com/books/content?id=nggnmAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      "url(http://books.google.com/books/content?id=nggnmAEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api)"
     );
   });
 });

@@ -1,6 +1,6 @@
 export const getAll = () => {
-  return Promise.resolve({
-    books: [
+  return Promise.resolve(
+     [
       {
         title: "The Linux Command Line",
         subtitle: "A Complete Introduction",
@@ -97,5 +97,5 @@ export const getAll = () => {
         shelf: "currentlyReading"
       }
     ]
-  });
+  )
 };
