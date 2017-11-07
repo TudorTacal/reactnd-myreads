@@ -4,7 +4,11 @@ import Book from "./Book";
 import "../public/App.css";
 
 class BookShelf extends React.Component {
+  transformTitleToCompare = (shelfTitle) => {
+    return shelfTitle.toLowerCase().split(' ').join('');
+  }
   render() {
+    const { title } = this.props;
     return (
     <div className="bookshelf">
       <h2 className="bookshelf-title">
@@ -12,7 +16,8 @@ class BookShelf extends React.Component {
       </h2>
       <div className="bookshelf-books"> 
         <ol className="books-grid">
-          {this.props.books.map((book) => 
+          {this.props.books.map((book) =>
+           book.shelf.toLowerCase() === this.transformTitleToCompare(title)  &&
             <li key={book.id}>
               <Book {...book} />
             </li>
