@@ -22,7 +22,8 @@ describe("BookShelf", () => {
             thumbnail:
               "http://books.google.com/books/content?id=nggnmAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
           },
-          id: "nggnmAEACAAJ"
+          id: "nggnmAEACAAJ",
+          shelf: "currentlyReading"
         },
         {
           title: "Learning Web Development with React and Bootstrap",
@@ -33,7 +34,20 @@ describe("BookShelf", () => {
             thumbnail:
               "http://books.google.com/books/content?id=nggnmAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
           },
-          id: "sJf1vQAACAAJ"
+          id: "sJf1vQAACAAJ",
+          shelf: "currentlyReading"
+        },
+        {
+          title: "My Book",
+          authors: ["MY Author"],
+          imageLinks: {
+            smallThumbnail:
+              "http://books.google.com/books/content?id=nggnmAEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+            thumbnail:
+              "http://books.google.com/books/content?id=nggnmAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+          },
+          id: "sJf1vQAACCOJ",
+          shelf: "read"
         }
       ]
     };
@@ -72,4 +86,17 @@ describe("BookShelf", () => {
         </ol>
       )).toBe(true);
   });
+
+  it("renders only books that belong to it", () => {
+    expect(wrapper.find(".books-grid").containsAllMatchingElements([
+        <ol className="books-grid">
+          <li>
+            <Book {...props.books[0]} />
+          </li>
+          <li>
+            <Book {...props.books[1]}/>
+          </li>
+        </ol>
+    ])).toBe(true);
+  })
 });

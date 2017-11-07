@@ -29,9 +29,9 @@ describe("BooksList", () => {
    it("renders three BookShelf components with titles and books", () => {
     return getAll().then(() => {
       wrapper.update();
-      expect(wrapper.contains(<BookShelf title={props.title1} books={wrapper.state("books")} />)).toBe(true);
-      expect(wrapper.contains(<BookShelf title={props.title2} books={wrapper.state("books")} />)).toBe(true);
-      expect(wrapper.contains(<BookShelf title={props.title3} books={wrapper.state("books")} />)).toBe(true);
+      expect(wrapper.contains(<BookShelf title={props.title1} books={books} />)).toBe(true);
+      expect(wrapper.contains(<BookShelf title={props.title2} books={books} />)).toBe(true);
+      expect(wrapper.contains(<BookShelf title={props.title3} books={books} />)).toBe(true);
     });
    });
 
