@@ -26,14 +26,14 @@ describe("BooksList", () => {
     expect(wrapper.find(".list-books-content").exists()).toBe(true);
   });
 
-  // TODO: Understand why the test is failing. 
-  //  it("renders three BookShelf components with titles and books", () => {
-  //   return getAll().then(() => {
-  //     expect(wrapper.contains(<BookShelf title={props.title1} books={wrapper.state("books")} />)).toBe(true);
-  //     expect(wrapper.contains(<BookShelf title={props.title2} books={wrapper.state("books")} />)).toBe(true);
-  //     expect(wrapper.contains(<BookShelf title={props.title3} books={wrapper.state("books")} />)).toBe(true);
-  //   });
-  //  });
+   it("renders three BookShelf components with titles and books", () => {
+    return getAll().then(() => {
+      wrapper.update();
+      expect(wrapper.contains(<BookShelf title={props.title1} books={wrapper.state("books")} />)).toBe(true);
+      expect(wrapper.contains(<BookShelf title={props.title2} books={wrapper.state("books")} />)).toBe(true);
+      expect(wrapper.contains(<BookShelf title={props.title3} books={wrapper.state("books")} />)).toBe(true);
+    });
+   });
 
   describe("componentDidMount", async () => {
     it("fetches a list of books from the BooksAPI and saves it to its state", () => {
