@@ -16,7 +16,8 @@ describe("Book", () => {
           "http://books.google.com/books/content?id=nggnmAEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
         thumbnail:
           "http://books.google.com/books/content?id=nggnmAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-      }
+      },
+      shelf: "currrentlyReading"
     };
     wrapper = shallow(<Book {...props} />);
   });
@@ -41,11 +42,21 @@ describe("Book", () => {
     expect(wrapper.find(".book-cover").exists()).toBe(true);
   });
 
-  it("renders a dropdown with options", () => {
-    expect(wrapper.find(".book-shelf-changer").html()).toBe(
-      '<div class="book-shelf-changer"><select><option value="none" disabled="">Move to...</option><option value="currentlyReading">Currently Reading</option><option value="wantToRead">Want to Read</option><option value="read">Read</option><option value="none">None</option></select></div>'
-    );
+   it("renders default selected option matching bookshelf title", () => {
+    expect(wrapper.find(".book-shelf-changer").containsAnyMatchingElements([
+       <div className="book-shelf-changer">
+            <select defaultValue={props.shelf}>
+              <option value="none" disabled>Move to...</option>
+              <option value="currentlyReading" >Currently Reading</option> 
+              <option value="wantToRead" >Want to Read</option>
+              <option value="read" >Read</option>
+              <option value="none">None</option>
+            </select>
+          </div>
+    ])).toBe(true);
   });
+
+
 
   it("renders its title from props", () => {
     expect(wrapper.find("div.book-title").text()).toBe(
@@ -64,4 +75,6 @@ describe("Book", () => {
       "url(http://books.google.com/books/content?id=nggnmAEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api)"
     );
   });
+
+  
 });
