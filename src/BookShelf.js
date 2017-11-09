@@ -4,22 +4,28 @@ import Book from "./Book";
 import "../public/App.css";
 
 class BookShelf extends React.Component {
-  transformTitleToCompare = (shelfTitle) => {
-    return shelfTitle.toLowerCase().split(' ').join('');
+
+  transformTitleToCompare= (title) => {
+    return title.toLowerCase().split(' ').join('');
   }
+
+  handleSelectShelf = (id, shelf) => {
+  }
+
   render() {
     const { title } = this.props;
-    return (
+    const { books } = this.props;
+    return (  
     <div className="bookshelf">
       <h2 className="bookshelf-title">
         {this.props.title}
       </h2>
       <div className="bookshelf-books"> 
         <ol className="books-grid">
-          {this.props.books.map((book) =>
+          {books.map((book) =>
            book.shelf.toLowerCase() === this.transformTitleToCompare(title)  &&
-            <li key={book.id}>
-              <Book {...book} />
+            <li key={book.id} >
+              <Book {...book} onSelectShelf={this.handleSelectShelf} />
             </li>
           )}
         </ol>

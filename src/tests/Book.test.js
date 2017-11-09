@@ -56,8 +56,6 @@ describe("Book", () => {
     ])).toBe(true);
   });
 
-
-
   it("renders its title from props", () => {
     expect(wrapper.find("div.book-title").text()).toBe(
       "The Linux Command Line"

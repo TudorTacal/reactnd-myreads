@@ -7,7 +7,6 @@ import "./testSetup";
 describe("BookShelf", () => {
   let wrapper;
   let title = "Currently Reading";
-  let book1, book2;
   let props;
   beforeEach(() => {
     props = {
@@ -72,19 +71,6 @@ describe("BookShelf", () => {
 
   it("renders an ol with the class 'books-grid'", () => {
     expect(wrapper.find(".books-grid").type()).toBe("ol");
-  });
-
-  it("renders an ol with books components from props", () => {
-      expect(wrapper.find(".books-grid").contains(
-        <ol className="books-grid">
-          <li>
-            <Book {...props.books[0]} />
-          </li>
-          <li>
-            <Book {...props.books[1]}/>
-          </li>
-        </ol>
-      )).toBe(true);
   });
 
   it("renders only books that belong to it", () => {
