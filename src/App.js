@@ -44,7 +44,9 @@ class BooksApp extends React.Component {
                   <OpenSearch />
             </div>
            )}/>       
-           <Route path="/search" component={SearchPage}/>      
+           <Route path="/search" render={(history) => (
+             <SearchPage books={this.state.books}/>
+           )}/>      
         </div>
     );
   }
