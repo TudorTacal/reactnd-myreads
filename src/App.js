@@ -2,6 +2,7 @@ import React from "react";
 import BooksList from "./BooksList";
 import Header from "./Header";
 import OpenSearch from "./OpenSearch";
+import SearchPage from "./SearchPage";
 import { Route, Router, Link } from "react-router-dom";
 import * as BooksAPI from "./BooksAPI";
 
@@ -42,7 +43,8 @@ class BooksApp extends React.Component {
                   <BooksList onUpdateBook={this.updateBook} books={this.state.books} />,
                   <OpenSearch />
             </div>
-           )}/>             
+           )}/>       
+           <Route path="/search" component={SearchPage}/>      
         </div>
     );
   }
