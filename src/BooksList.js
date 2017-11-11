@@ -1,6 +1,5 @@
 import React from "react";
 import BookShelf from "./BookShelf";
-import * as BooksAPI from './BooksAPI';
 
  class BooksList extends React.Component {  
 
@@ -9,7 +8,7 @@ import * as BooksAPI from './BooksAPI';
   }
 
   filterBooks = (books, title) => {
-    return books.filter((book) =>  (book.shelf.toLowerCase() == title))
+    return books.filter((book) =>  (book.shelf.toLowerCase() === title))
   }
 
   passBookUpdateDetails = (id, shelf) => {

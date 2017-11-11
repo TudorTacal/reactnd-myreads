@@ -1,7 +1,8 @@
 import React from "react";
 import BooksList from "./BooksList";
 import Header from "./Header";
-import { Route, Router, BrowserRouter } from "react-router-dom";
+import OpenSearch from "./OpenSearch";
+import { Route, Router, Link } from "react-router-dom";
 import * as BooksAPI from "./BooksAPI";
 
 class BooksApp extends React.Component {
@@ -34,15 +35,15 @@ class BooksApp extends React.Component {
 
   render() {
     return (
-      <div className="list-books">
-      <BrowserRouter >
-        <Route exact path="/" render={() => (
-            <Header />,
-            <BooksList onUpdateBook={this.updateBook} books={this.state.books} />
-        )}/>
-      </BrowserRouter>
-       
-      </div>
+        <div className="app"> 
+          <Route exact path="/" render={() => (
+            <div className="list-books">
+                  <Header />,
+                  <BooksList onUpdateBook={this.updateBook} books={this.state.books} />,
+                  <OpenSearch />
+            </div>
+           )}/>             
+        </div>
     );
   }
 }

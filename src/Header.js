@@ -1,6 +1,4 @@
 import React from "react";
-// import * as BooksAPI from './BooksAPI'
-import "../public/App.css";
 
 export default function Header() {
   return (
