@@ -1,6 +1,7 @@
 import React from "react";
 import BooksList from "./BooksList";
 import Header from "./Header";
+import { Route, Router, BrowserRouter } from "react-router-dom";
 import * as BooksAPI from "./BooksAPI";
 
 class BooksApp extends React.Component {
@@ -27,15 +28,20 @@ class BooksApp extends React.Component {
 
   componentDidMount() {
     BooksAPI.getAll().then(books => {
-      this.setState({ books });
+      this.setState({ books });      
     });
   }
 
   render() {
     return (
       <div className="list-books">
-        <Header />
-        <BooksList onUpdateBook={this.updateBook} books={this.state.books} />
+      <BrowserRouter >
+        <Route exact path="/" render={() => (
+            <Header />,
+            <BooksList onUpdateBook={this.updateBook} books={this.state.books} />
+        )}/>
+      </BrowserRouter>
+       
       </div>
     );
   }
