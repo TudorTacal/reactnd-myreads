@@ -7,7 +7,7 @@ const api = "https://reactnd-books-api.udacity.com"
 // if (!token)
 //   token = localStorage.token = Math.random().toString(36).substr(-8)
 
-let token = 'Tudor'
+let token = 'Tudor1'
 
 const headers = {
   'Accept': 'application/json',

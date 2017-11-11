@@ -25,17 +25,7 @@ class BooksApp extends React.Component {
     });
   }
 
-  retrieveServerBooksFromNoneShelf() {
-    BooksAPI.getAll().then(books => {
-      books.map((book) => {
-        if (book.shelf == 'none') 
-          BooksAPI.update(book, 'read'); 
-      }) 
-    });
-  }
-
   componentDidMount() {
-    this.retrieveServerBooksFromNoneShelf();
     BooksAPI.getAll().then(books => {
       this.setState({ books });
     });

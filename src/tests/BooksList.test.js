@@ -15,19 +15,22 @@ describe("BooksList", () => {
       title2: "Want to Read",
       title3: "Read",
       bookShelfUpdate: () => {},
-      books 
+      books
     };
-    wrapper = shallow(<BooksList onUpdateBook={props.bookShelfUpdate} books={books}/>);
+    wrapper = shallow(<BooksList books={props.books} />);
   });
 
   it("renders a div with the class 'list-books-content'", () => {
     expect(wrapper.find(".list-books-content").exists()).toBe(true);
   });
 
-   it("renders three BookShelf components with titles and books", () => {
-     console.log(wrapper.debug());
-      expect(wrapper.contains(<BookShelf  bookShelfUpdate={[Function]} title={props.title1} books={props.books} />)).toBe(true);
-      expect(wrapper.contains(<BookShelf  bookShelfUpdate={[Function]} title={props.title2} books={[]} />)).toBe(true);
-      expect(wrapper.contains(<BookShelf  bookShelfUpdate={[Function]} title={props.title3} books={[]} />)).toBe(true);
-    });
+  it("renders three BookShelf components with event handlers, titles and books", () => {
+    expect(
+      wrapper.containsAllMatchingElements([
+        <BookShelf title={props.title1} books={props.books} />,
+        <BookShelf title={props.title2} books={[]} />,
+        <BookShelf title={props.title3} books={[]} />
+      ])
+    ).toBe(true);
+  });
 });
