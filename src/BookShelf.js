@@ -10,6 +10,7 @@ class BookShelf extends React.Component {
   }
 
   handleSelectShelf = (id, shelf) => {
+     this.props.bookShelfUpdate(id, shelf);
   }
 
   render() {
