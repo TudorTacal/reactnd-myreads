@@ -4,7 +4,6 @@ import  Book  from "./Book";
 import * as BooksAPI from "./BooksAPI";
 
 class SearchPage extends React.Component {
-
     constructor(props){
         super(props)
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,13 +20,13 @@ class SearchPage extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        let emptyRes={error: "empty query"};
         BooksAPI.search(this.state.query, 20).then(res => {
-            this.setState({searchBooks: res});
+            res ? this.setState({searchBooks: res}) : this.setState({searchBooks: emptyRes});
         });
     }
 
     render() {
-        console.log(this.state.searchBooks);
         const { query } = this.state;
         return (
             <div className="search-books">
@@ -45,10 +44,14 @@ class SearchPage extends React.Component {
                 </div>
                 <div className="search-books-results">
                     <ol className="books-grid">
-                        {this.state.searchBooks.map((book) =>
-                            <li key={book.id} >
-                                <Book {...book} onSelectShelf={this.handleSelectShelf} />
-                            </li>
+                        { this.state.searchBooks.error ? (
+                             <div>There are no books that match this criteria</div>
+                        ) : (
+                             this.state.searchBooks.map((book) =>
+                                <li key={book.id} >
+                                    <Book {...book} onSelectShelf={this.handleSelectShelf} />
+                                </li>
+                            )
                         )}
                     </ol>
                 </div>
