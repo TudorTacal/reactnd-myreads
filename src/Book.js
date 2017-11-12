@@ -8,7 +8,9 @@ class Book extends React.Component {
 
   render() {
     let bookId = this.props.id;
-    return (
+    let authors = this.props.authors;
+    authors? authors.join(", ") : "";
+    return(
       <div className="book">
         <div className="book-top">
           <div className="book-cover" style={{ backgroundImage: `url(${this.props.imageLinks.smallThumbnail})` }} />
@@ -23,7 +25,8 @@ class Book extends React.Component {
           </div>
         </div>
         <div className="book-title" >{this.props.title}</div>
-        <div className="book-authors" >{this.props.authors.join(", ")}</div>
+        <div className="book-authors" >{ authors && 'hello'}
+        </div>
       </div>
     );
   }
