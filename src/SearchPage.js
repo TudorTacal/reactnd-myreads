@@ -2,11 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import  Book  from "./Book";
 import * as BooksAPI from "./BooksAPI";
+import { notDeepEqual } from "assert";
 
 class SearchPage extends React.Component {
     constructor(props){
         super(props)
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSelectShelf = this.handleSelectShelf.bind(this);
     }
 
     state = {
@@ -17,6 +19,10 @@ class SearchPage extends React.Component {
     updateQuery(query) {
         this.setState({query: query.trim()});
     }
+
+    handleSelectShelf = (id, shelf) => {
+        this.props.onUpdateBook(id, shelf); 
+     }
 
     handleSubmit(e) {
         e.preventDefault();

@@ -1,4 +1,4 @@
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import React from "react";
 import BooksApp from "../App";
 import BooksList from "../BooksList";
@@ -9,14 +9,15 @@ import "./testSetup";
 
 jest.mock("../BooksAPI");
 
-
-fdescribe("App", () => {
+//TODO: Fix the tests to include the router
+describe("App", () => {
   let wrapper;
   beforeEach(() => {
     wrapper = shallow(<BooksApp />);
   });
 
   it("renders a div with the class 'list-books'", () => {
+    console.log(wrapper.debug());
     expect(wrapper.find(".list-books").exists()).toBe(true);
   });
 
