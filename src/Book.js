@@ -15,7 +15,8 @@ class Book extends React.Component {
         <div className="book-top">
           <div className="book-cover" style={{ backgroundImage: `url(${this.props.imageLinks.smallThumbnail})` }} />
           <div className="book-shelf-changer">
-            <select defaultValue={this.props.shelf} onChange={(event) => {this.handleShelfChange({id: bookId}, event.target.value, this.props)}}>
+            <select defaultValue={this.props.shelf || "default"} onChange={(event) => {this.handleShelfChange({id: bookId}, event.target.value, this.props)}}>
+              <option style={{display: 'none'}} disabled hidden value="default"/>
               <option value="none" disabled>Move to...</option>
               <option value="currentlyReading" >Currently Reading</option> 
               <option value="wantToRead" >Want to Read</option>

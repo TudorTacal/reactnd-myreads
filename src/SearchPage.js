@@ -5,47 +5,44 @@ import * as BooksAPI from "./BooksAPI";
 import { notDeepEqual } from "assert";
 
 class SearchPage extends React.Component {
+
+//TODO: Book state is consistent on both pages
+//Catch Book errors
     constructor(props){
         super(props)
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.state = {
+            query: '',
+            searchBooks: []
+        }
         this.handleSelectShelf = this.handleSelectShelf.bind(this);
-    }
+        }
 
-    state = {
-        query: '',
-        searchBooks: []
-    }
-
-    updateQuery(query) {
-        this.setState({query: query.trim()});
-    }
-
-    handleSelectShelf = (id, shelf) => {
-        this.props.onUpdateBook(id, shelf); 
+    handleSelectShelf = (id, shelf, book) => {
+        this.props.onUpdateBook(book, shelf);
      }
 
-    handleSubmit(e) {
-        e.preventDefault();
+     updateQuery(query) {
+        this.setState({query: query.trim()});   
         let emptyRes={error: "empty query"};
         BooksAPI.search(this.state.query, 20).then(res => {
+            console.log(this.state.query);
+            console.log(res);
             res ? this.setState({searchBooks: res}) : this.setState({searchBooks: emptyRes});
-        });
-    }
+        });    
+     }
 
     render() {
         const { query } = this.state;
         return (
             <div className="search-books">
                 <div className="search-books-bar">
-                    <Link className="close-search" to="/"/>
+                    <Link className="close-search" to="/" onClick={this.forceUpdate}/>
                     <div className="search-books-input-wrapper">
-                    <form onSubmit={this.handleSubmit} >
                         <input 
                             type="text"
                             placeholder="Search by title or author"
                             value={query}
                             onChange={(event) => this.updateQuery(event.target.value)} />
-                     </form>
                     </div>
                 </div>
                 <div className="search-books-results">
@@ -55,7 +52,7 @@ class SearchPage extends React.Component {
                         ) : (
                              this.state.searchBooks.map((book) =>
                                 <li key={book.id} >
-                                    <Book {...book} onSelectShelf={this.handleSelectShelf} />
+                                    <Book {...book} onSelectShelf={this.handleSelectShelf}/>
                                 </li>
                             )
                         )}
