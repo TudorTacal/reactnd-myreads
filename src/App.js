@@ -29,11 +29,15 @@ class BooksApp extends React.Component {
     });
   }
 
-  updateBookFromSearch(book, shelf) {
-    this.updateServerBooks(book,shelf);
-    this.setState(state => {        
-        books: state.books.concat([book]);
-      });
+  updateBookFromSearch = (book, shelf) => {
+    let retrievedBook;
+    BooksAPI.update(book,shelf).then(res =>{
+        BooksAPI.get(book.id).then(res =>{
+            retrievedBook = res;
+            this.setState(state => ({books: state.books.concat([retrievedBook])}));
+        }) 
+    });
+    
   }
 
   componentDidMount() {

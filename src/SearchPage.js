@@ -6,8 +6,8 @@ import { notDeepEqual } from "assert";
 
 class SearchPage extends React.Component {
 
-//TODO: Book state is consistent on both pages
-//Catch Book errors
+//TODO: Book state is consistent on both pages.
+
     constructor(props){
         super(props)
         this.state = {
@@ -25,18 +25,17 @@ class SearchPage extends React.Component {
         this.setState({query: query.trim()});   
         let emptyRes={error: "empty query"};
         BooksAPI.search(this.state.query, 20).then(res => {
-            console.log(this.state.query);
-            console.log(res);
             res ? this.setState({searchBooks: res}) : this.setState({searchBooks: emptyRes});
         });    
      }
 
     render() {
-        const { query } = this.state;
+        const { query, searchBooks } = this.state;
+        const { books } = this.props;
         return (
             <div className="search-books">
                 <div className="search-books-bar">
-                    <Link className="close-search" to="/" onClick={this.forceUpdate}/>
+                    <Link className="close-search" to="/" />
                     <div className="search-books-input-wrapper">
                         <input 
                             type="text"
@@ -47,10 +46,10 @@ class SearchPage extends React.Component {
                 </div>
                 <div className="search-books-results">
                     <ol className="books-grid">
-                        { this.state.searchBooks.error ? (
+                        { searchBooks.error ? (
                              <div>There are no books that match this criteria</div>
                         ) : (
-                             this.state.searchBooks.map((book) =>
+                             searchBooks.map((book) =>
                                 <li key={book.id} >
                                     <Book {...book} onSelectShelf={this.handleSelectShelf}/>
                                 </li>
