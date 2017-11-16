@@ -6,8 +6,6 @@ import { notDeepEqual } from "assert";
 
 class SearchPage extends React.Component {
 
-//TODO: Book state is consistent on both pages.
-
     constructor(props){
         super(props)
         this.state = {
@@ -32,6 +30,11 @@ class SearchPage extends React.Component {
     render() {
         const { query, searchBooks } = this.state;
         const { books } = this.props;
+        books.map(book => {
+            searchBooks.forEach((searchBook, index, array) => {
+                if(book.title === searchBook.title) return array[index] = book;
+            });
+        });
         return (
             <div className="search-books">
                 <div className="search-books-bar">
