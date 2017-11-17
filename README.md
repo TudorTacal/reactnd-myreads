@@ -12,6 +12,18 @@ I TDD'ed the project until the `SearchPage` then due to a lack of time I had to 
 
 ## How it works
 
+When the app starts and the page loads, you are presented with 3 shelves and a couple of books that come by default in each shelf.
+
+You then have the option to instantly move books from one shelf to another. 
+
+To add new books click the + button down-right which will open a new search page. This is achieved using React Router and and it's all handled in the front-end. There are no back-end routes in this project.
+
+Search books by their title. As you type in the input field new books will be rendered on the page, using data from the API. You will notice that the search results that are already on some shelf will display that particular shelf when you click on the shelf changer button. State persists accross the main page and the search page.
+
+From the search results you can add whatever books you want to any existing shelf and see the results instantly on the main page.
+
+
+
 ## Main Components
 
 * `<App/>`
