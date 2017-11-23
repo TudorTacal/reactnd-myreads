@@ -1,45 +1,47 @@
 import React from "react";
 import BookShelf from "./BookShelf";
 
-export default function BooksList() {
-  transformTitle = shelfTitle => {
+const BooksList = (props) => {
+  const transformTitle = shelfTitle => {
     return shelfTitle
       .toLowerCase()
       .split(" ")
       .join("");
   };
 
-  filterBooks = (books, title) => {
+  const filterBooks = (books, title) => {
     return books.filter(book => book.shelf.toLowerCase() === title);
   };
 
-  passBookUpdateDetails = (id, shelf) => {
-    this.props.onUpdateBook(id, shelf);
+  const passBookUpdateDetails = (id, shelf) => {
+    props.onUpdateBook(id, shelf);
   };
   const [title1, title2, title3] = [
     "Currently Reading",
     "Want to Read",
     "Read"
   ];
-  const { books } = this.props;
+  const { books } = props;
 
   return (
     <div className="list-books-content">
       <BookShelf
-        bookShelfUpdate={this.passBookUpdateDetails}
+        bookShelfUpdate={passBookUpdateDetails}
         title={title1}
-        books={this.filterBooks(books, this.transformTitle(title1))}
+        books={filterBooks(books, transformTitle(title1))}
       />
       <BookShelf
-        bookShelfUpdate={this.passBookUpdateDetails}
+        bookShelfUpdate={passBookUpdateDetails}
         title={title2}
-        books={this.filterBooks(books, this.transformTitle(title2))}
+        books={filterBooks(books, transformTitle(title2))}
       />
       <BookShelf
-        bookShelfUpdate={this.passBookUpdateDetails}
+        bookShelfUpdate={passBookUpdateDetails}
         title={title3}
-        books={this.filterBooks(books, this.transformTitle(title3))}
+        books={filterBooks(books, transformTitle(title3))}
       />
     </div>
   );
 }
+
+export default BooksList;

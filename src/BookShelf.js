@@ -3,31 +3,31 @@ import React from "react";
 import Book from "./Book";
 import "../public/App.css";
 
-export default function BookShelf() {
-  transformTitleToCompare = title => {
+export default function BookShelf(props) {
+  const transformTitleToCompare = title => {
     return title
       .toLowerCase()
       .split(" ")
       .join("");
   };
 
-  handleSelectShelf = (id, shelf) => {
-    this.props.bookShelfUpdate(id, shelf);
+  const handleSelectShelf = (id, shelf) => {
+    props.bookShelfUpdate(id, shelf);
   };
 
-  const { title } = this.props;
-  const { books } = this.props;
+  const { title } = props;
+  const { books } = props;
   return (
     <div className="bookshelf">
-      <h2 className="bookshelf-title">{this.props.title}</h2>
+      <h2 className="bookshelf-title">{props.title}</h2>
       <div className="bookshelf-books">
         <ol className="books-grid">
           {books.map(
             book =>
               book.shelf.toLowerCase() ===
-                this.transformTitleToCompare(title) && (
+                transformTitleToCompare(title) && (
                 <li key={book.id}>
-                  <Book {...book} onSelectShelf={this.handleSelectShelf} />
+                  <Book {...book} onSelectShelf={handleSelectShelf} />
                 </li>
               )
           )}
