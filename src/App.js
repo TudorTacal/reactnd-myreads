@@ -34,7 +34,9 @@ class BooksApp extends React.Component {
     BooksAPI.update(book,shelf).then(res =>{
         BooksAPI.get(book.id).then(res =>{
             retrievedBook = res;
-            this.setState(state => ({books: state.books.concat([retrievedBook])}));
+            console.log(this.state.books.filter(book => book.title == retrievedBook.title))
+            if (this.state.books.filter(book => book.title == retrievedBook.title).length == 0)     
+                 this.setState(state => ({books: state.books.concat([retrievedBook])}));
         }) 
     });
     
