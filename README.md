@@ -10,6 +10,13 @@ The books are being retrieved from an [`API`](https://reactnd-books-api.udacity.
 
 I TDD'ed the project until the `SearchPage` then due to a lack of time I had to stop writting tests and just finish the project. By the way, testing isn't required or covered in this course.
 
+## Screenshots
+
+![MyReadsMainPage](./src/screenshots/MyReadsHome.png "Main Page")
+![MyReadsSearch](./src/screenshots/MyReadsSearch.png "Search Page")
+![MyReadsShelf](./src/screenshots/MyReadsShelf.png "Change Shelf")
+
+
 ## How it works
 
 When the app starts and the page loads, you are presented with 3 shelves and a couple of books that come by default in each shelf.
