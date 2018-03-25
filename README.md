@@ -12,8 +12,16 @@ I TDD'ed the project until the `SearchPage` then due to a lack of time I had to 
 
 ## Screenshots
 
+Main page
+
 ![MyReadsMainPage](./src/screenshots/MyReadsHome.png "Main Page")
+
+Search Page
+
 ![MyReadsSearch](./src/screenshots/MyReadsSearch.png "Search Page")
+
+Change Shelf
+
 ![MyReadsShelf](./src/screenshots/MyReadsShelf.png "Change Shelf")
 
 
@@ -74,7 +82,7 @@ The backend API uses a fixed set of cached search results and is limited to a pa
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app)
 
-##TO DO
+## TO DO
 
 * fix the App tests to include React Router
 * write all remaining relevant tests
